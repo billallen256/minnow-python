@@ -3,8 +3,7 @@
 from pathlib import Path
 from typing import Dict
 
-class MinnowPropertiesException(Exception):
-    pass
+from .exceptions import MinnowPropertiesException
 
 def has_reserved_characters(s: str) -> bool:
     if '=' in s: return True

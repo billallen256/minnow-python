@@ -30,7 +30,7 @@ save_properties(props, Path('path/to/file.properties')
 This function will return pairs of data/metadata files in a directory as `DataMetaPair` instances.
 
 ```python
-pairs_to_process = list_pairs_at_path(Path('path/to/input/directory')
+pairs_to_process = list_pairs_at_path(Path('path/to/input/directory'))
 
 for pair in pairs_to_process:
     data_path = pair.data_file
