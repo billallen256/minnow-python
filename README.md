@@ -1,6 +1,6 @@
 # Minnow Python
 
-Utilities for the Minnow file processing framework.
+Utilities for the [Minnow file processing framework](https://github.com/gershwinlabs/minnow).
 
 ```python
 import minnow
@@ -18,7 +18,7 @@ from pathlib import Path
 import minnow
 
 class MyProcessor(minnow.Processor):
-    def process(metadata_file_path, data_file_path, output_path):
+    def process(self, metadata_file_path, data_file_path, output_path):
         metadata_dict = minnow.load_properties(metadata_file_path)
         data_file = data_file_path.open('rb')  # Use 'r' for text and 'rb' for binary
 
