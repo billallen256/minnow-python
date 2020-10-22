@@ -19,7 +19,8 @@ def load_properties(path: Path) -> Dict[str, str]:
     return {k.strip(): v.strip() for k, v in valid_pairs}
 
 def save_properties(properties: Dict, path:Path) -> None:
-    pairs = [(str(k).strip(), str(v).strip()) for k, v in properties.items()]
+    pairs = [(str(k).strip(), str(v).strip()) for k, v in properties.items() if type(v) is not bool]
+    pairs += [(str(k).strip(), str(v).strip().lower()) for k, v in properties.items() if type(v) is bool]  # True becomes true
 
     for k, v in pairs:
         if has_reserved_characters(k):

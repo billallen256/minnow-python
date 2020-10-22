@@ -10,7 +10,7 @@ with open(path.join(this_directory, 'README.md'), 'r') as f:
 
 setup(
     name='minnow',
-    version='2020.274.0',
+    version='2020.295.0',
     author='Bill Allen',
     author_email='photo.allen@gmail.com',
     description='Utilities for the Minnow file processing framework.',
