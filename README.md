@@ -77,3 +77,18 @@ for pair in pairs_to_process:
 
     # do some processing on each pair
 ```
+
+By default, `list_pairs_at_path()` looks for `.properties` files, but you can change the `extension` parameter:
+
+```python
+pairs_to_process = list_pairs_at_path(Path('path/to/input/directory'), extension='.json')
+
+for pair in pairs_to_process:
+    data_path = pair.data_path
+    properties_path = pair.metadata_path
+
+    # read the properties if you need to
+    properties_json = json.load(properties_path.read_text())
+
+    # do some processing on each pair
+```

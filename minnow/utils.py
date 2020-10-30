@@ -10,11 +10,11 @@ class DataMetadataPair:
         self.data_path = data_path
         self.metadata_path = metadata_path
 
-def list_pairs_at_path(input_dir: Path) -> List[DataMetadataPair]:
+def list_pairs_at_path(input_dir: Path, extension: str='.properties') -> List[DataMetadataPair]:
     if not input_dir.exists():
         raise MinnowPathException('Cannot list_pairs_at_path. Path does not exist: {}'.format(input_dir))
 
-    metadata_paths = list(input_dir.glob('*.properties'))
+    metadata_paths = list(input_dir.glob('*'+extension))
     data_paths = [Path(mp.with_suffix('')) for mp in metadata_paths]
     pairs = [DataMetadataPair(data_paths[i], metadata_paths[i]) for i in range(len(data_paths)) if data_paths[i].exists()]
     return pairs
