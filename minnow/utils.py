@@ -14,6 +14,12 @@ def list_pairs_at_path(input_dir: Path, extension: str='.properties') -> List[Da
     if not input_dir.exists():
         raise MinnowPathException('Cannot list_pairs_at_path. Path does not exist: {}'.format(input_dir))
 
+    if len(extension) == 0:
+        raise MinnowPathException('Cannot list_pairs_at_path with file extension of length zero.')
+
+    if not extension.startswith('.'):
+        raise MinnowPathException('Cannot list_pairs_at_path. Extension must start with a dot.')
+
     metadata_paths = list(input_dir.glob('*'+extension))
     data_paths = [Path(mp.with_suffix('')) for mp in metadata_paths]
     pairs = [DataMetadataPair(data_paths[i], metadata_paths[i]) for i in range(len(data_paths)) if data_paths[i].exists()]

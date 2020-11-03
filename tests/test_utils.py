@@ -34,3 +34,9 @@ class TestDataMetadataPair(unittest.TestCase):
                 found[pair.data_path.name] = True
 
             self.assertTrue(all(found.values()))
+
+    def test_empty_extension(self):
+        self.assertRaises(minnow.MinnowPathException, minnow.list_pairs_at_path, Path('/tmp'), '')
+
+    def test_non_dot_extension(self):
+        self.assertRaises(minnow.MinnowPathException, minnow.list_pairs_at_path, Path('/tmp'), 'foo')
